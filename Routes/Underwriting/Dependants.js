@@ -3,6 +3,7 @@ const FamilyDependants = express.Router();
 const Joi = require("joi");
 var sql = require("mssql");
 const config = require("../../database");
+
 FamilyDependants.get("/", (req, res) => {
   const pool = new sql.ConnectionPool(config);
   pool.connect(error => {

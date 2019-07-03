@@ -11,7 +11,7 @@ class Login extends Component {
       redirect: false
     };
   }
-  handleInputChange = event => {
+  handleInputChange =(event) => {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -38,7 +38,6 @@ class Login extends Component {
           if (data.success) {
             localStorage.setItem("token", data.token);
             localStorage.setItem("UserData", data.userdata[0].UserName);
-            console.log(localStorage.getItem("UserData"));
             {
               this.setRedirect();
             }
