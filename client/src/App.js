@@ -33,6 +33,7 @@ import InsuredItems from "./Components/pages/Underwriting/InsuredItems";
 import ReceiveMotorCertificates from "./Components/pages/Underwriting/ReceiveMotorCertificates";
 import CoInsurance from "./Components/pages/Underwriting/CoInsurance";
 import report from "./Reports/testreport";
+import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
 
 class App extends Component {
   render() {
@@ -81,6 +82,7 @@ class App extends Component {
               exact
               component={ReceiveMotorCertificates}
             />
+            <Route path="/ClaimType" exact component={ClaimTypes} />
           </Wrapper>
         </BrowserRouter>
       </div>
