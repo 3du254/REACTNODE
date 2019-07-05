@@ -116,10 +116,7 @@ router.post("/", function (req, res) {
                 let user = result.recordset[0].UserName;
                 let Password = result.recordset[0].Password;
 
-                bcrypt.compare(req.body.password, Password, function (
-                  err,
-                  data
-                ) {
+                bcrypt.compare(req.body.password, Password, function (err,data) {
                   if (data) {
                     var token = jwt.sign({
                         exp: Math.floor(Date.now() / 1000) + 60 * 60,

@@ -130,6 +130,7 @@ app.use(
   PolicyRegister
 );
 app.use("/api/ClaimTypes", auth.validaterole("Claim Types"), ClaimTypes);
+app.use("/api/ClaimsCategories", auth.validaterole("ClaimsCategories"), ClaimTypes);
 //end of app use routes
 app.use((req, res, next) => {
   const error = new Error("resource not found");
