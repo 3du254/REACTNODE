@@ -5,14 +5,13 @@ import TableWrapper from "../../TableWrappper";
 import Wrapper from "../../wrapper";
 import swal from "sweetalert";
 
-class ClaimTypes extends Component {
+class ClaimsCategories extends Component {
   constructor() {
     super();
     this.state = {
-      ClaimTypes: [],
-      TypeCode: "001",
-      Category: "Category",
-      TypeName: "TypeName"
+      ClaimsCategories: [],
+      Code: "",
+      Name: ""
     };
   }
 
@@ -40,7 +39,7 @@ class ClaimTypes extends Component {
     });
   }
   fetchData = () => {
-    fetch("api/ClaimTypes", {
+    fetch("api/ClaimsCategories", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -48,11 +47,11 @@ class ClaimTypes extends Component {
       }
     })
       .then(res => res.json())
-      .then(ClaimTypes => {
-        if (ClaimTypes.length > 0) {
-          this.setState({ ClaimTypes });
+      .then(ClaimsCategories => {
+        if (ClaimsCategories.length > 0) {
+          this.setState({ ClaimsCategories });
         } else {
-          swal("Oops!", ClaimTypes.message, "error");
+          swal("Oops!", ClaimsCategories.message, "error");
         }
       })
       .catch(err => {
@@ -72,7 +71,7 @@ class ClaimTypes extends Component {
     this.setState({ [actionMeta.name]: County.value });
   };
 
-  handleDelete = ClaimTypes => {
+  handleDelete = ClaimsCategories => {
     swal({
       title: "Are you sure?",
       text: "Are you sure that you want to delete this record?",
@@ -80,8 +79,8 @@ class ClaimTypes extends Component {
       dangerMode: false
     }).then(willDelete => {
       if (willDelete) {
-        console.log(ClaimTypes.TypeCode);
-        return fetch("api/ClaimTypes/" + ClaimTypes.TypeCode, {
+        //console.log(ClaimsCategories.Code);
+        return fetch("api/ClaimsCategories/" + ClaimsCategories.Code, {
           method: "Delete",
           headers: {
             "Content-Type": "application/json",
@@ -104,12 +103,11 @@ class ClaimTypes extends Component {
       }
     });
   };
-  handleEdit = ClaimTypes => {
+  handleEdit = ClaimsCategories => {
     const data = {
-      ClaimTypes: [],
-      TypeCode: ClaimTypes.TypeCode,
-      Category: ClaimTypes.Category,
-      TypeName: ClaimTypes.TypeName
+      ClaimsCategories: [],
+      Code: ClaimsCategories.Code,
+      Name: ClaimsCategories.Name
     };
     this.setState(data);
     this.setState({ reseter: true });
@@ -117,12 +115,11 @@ class ClaimTypes extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const data = {
-      TypeCode: this.state.TypeCode,
-      Category: this.state.Category,
-      TypeName: this.state.TypeName
+      Code: this.state.Code,
+      Name: this.state.Name
     };
-    console.log(data);
-    this.postData("api/ClaimTypes", data);
+    //console.log(data);
+    this.postData("api/ClaimsCategories", data);
     this.setState({ reseter: false });
   };
   postData(url = ``, data = {}) {
@@ -160,47 +157,39 @@ class ClaimTypes extends Component {
   render() {
     const ColumnData = [
       {
-        label: "TypeCode",
-        field: "TypeCode",
+        label: "Code",
+        field: "Code",
         sort: "asc",
         width: 250
       },
-
       {
-        label: "Category",
-        field: "Category",
-        sort: "asc",
-        width: 200
-      },
-      {
-        label: "TypeName",
-        field: "TypeName",
+        label: "Name",
+        field: "Name",
         sort: "asc",
         width: 200
       }
     ];
     let Rowdata1 = [];
-    const Rows = [...this.state.ClaimTypes];
+    const Rows = [...this.state.ClaimsCategories];
 
     if (Rows.length > 0) {
-      Rows.map((k, i) => {
+      Rows.map((Row, i) => {
         let Rowdata = {
-          TypeCode: k.TypeCode,
-          Category: k.Category,
-          TypeName: k.TypeName,
+          Code: Row.Code,
+          Name: Row.Name,
           action: (
             <span>
               {" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleEdit(k, e)}
+                onClick={e => this.handleEdit(Row, e)}
               >
                 Edit
               </a>
               |{" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleDelete(k, e)}
+                onClick={e => this.handleDelete(Row, e)}
               >
                 {" "}
                 Delete
@@ -216,7 +205,7 @@ class ClaimTypes extends Component {
       return (
         <div>
           <Breadcumps
-            tablename={"Add Claim Type"}
+            tablename={"Add Claims Categories"}
             button={
               <button
                 to="/"
@@ -243,7 +232,7 @@ class ClaimTypes extends Component {
       return (
         <div>
           <Breadcumps
-            tablename={"Claim Type list"}
+            tablename={"Claims Categories list"}
             button={
               <button
                 type="button"
@@ -280,45 +269,31 @@ const Formdata = props => {
               <div className=" row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="TypeCode">TypeCode</label>
+                    <label htmlFor="Code">Claims Categories Code</label>
                     <input
                       type="text"
-                      name="TypeCode"
-                      value={props.Values.TypeCode}
+                      name="Code"
+                      value={props.Values.Code}
                       onChange={props.handleInputChange}
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Enter TypeCode"
+                      placeholder="Enter Code"
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="Category">Category</label>
+                    <label htmlFor="Name">Claims Categories Name</label>
                     <input
                       type="text"
-                      name="Category"
+                      name="Name"
                       required
-                      value={props.Values.Category}
+                      value={props.Values.Name}
                       className="form-control"
                       onChange={props.handleInputChange}
-                      id="Category"
-                      aria-describedby="AgentNameHelp"
-                      placeholder="Enter Category name"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="TypeName">TypeName</label>
-                    <input
-                      type="text"
-                      name="TypeName"
-                      required
-                      value={props.Values.TypeName}
-                      className="form-control"
-                      onChange={props.handleInputChange}
-                      id="TypeName"
+                      id="Name"
                       aria-describedby="CityHelp"
-                      placeholder="Enter TypeName"
+                      placeholder="Enter Name"
                     />
                   </div>
                 </div>
@@ -334,4 +309,4 @@ const Formdata = props => {
   );
 };
 
-export default ClaimTypes;
+export default ClaimsCategories;

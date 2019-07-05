@@ -34,6 +34,7 @@ import ReceiveMotorCertificates from "./Components/pages/Underwriting/ReceiveMot
 import CoInsurance from "./Components/pages/Underwriting/CoInsurance";
 import report from "./Reports/testreport";
 import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
+import ClaimsCategories from "./Components/pages/Claims/ClaimsCategories";
 
 class App extends Component {
   render() {
@@ -60,21 +61,25 @@ class App extends Component {
               exact
               component={PolicyCategories}
             />
-            <Route path='/PaymentModes' exact component={PaymentModes} />
-            <Route path='/agents' exact component={Agents} />
-            <Route path='/clientcategory' exact component={clientcategory} />
-            <Route path='/vehiclemake' exact component={VehicleMake} />
-            <Route path='/motorvehicles' exact component={MotorVehicle} />
-            <Route path='/Insurer' exact component={InsuranceCompanies} />
-            <Route path='/PolicyClasses' exact component={PolicyClasses} />
-            <Route path='/calcitems' exact component={ClacItems} />
-            <Route path='/FamilyMember' exact component={FamilyMember} />
-            <Route path='/FamilyDependant' exact component={FamilyDependant} />
-            <Route path='/premiumCalculator' exact component={PremiumCalculator} />
-            <Route path='/department' exact component={Department} />
-            <Route path='/damagedcerts' exact component={DamagedCerts} />
-            <Route path='/policyregister' exact component={PolicyRegister} />
-             <Route path="/InsuredItems" exact component={InsuredItems} />
+            <Route path="/PaymentModes" exact component={PaymentModes} />
+            <Route path="/agents" exact component={Agents} />
+            <Route path="/clientcategory" exact component={clientcategory} />
+            <Route path="/vehiclemake" exact component={VehicleMake} />
+            <Route path="/motorvehicles" exact component={MotorVehicle} />
+            <Route path="/Insurer" exact component={InsuranceCompanies} />
+            <Route path="/PolicyClasses" exact component={PolicyClasses} />
+            <Route path="/calcitems" exact component={ClacItems} />
+            <Route path="/FamilyMember" exact component={FamilyMember} />
+            <Route path="/FamilyDependant" exact component={FamilyDependant} />
+            <Route
+              path="/premiumCalculator"
+              exact
+              component={PremiumCalculator}
+            />
+            <Route path="/department" exact component={Department} />
+            <Route path="/damagedcerts" exact component={DamagedCerts} />
+            <Route path="/policyregister" exact component={PolicyRegister} />
+            <Route path="/InsuredItems" exact component={InsuredItems} />
             <Route path="/CoInsurance" exact component={CoInsurance} />
             <Route path="/report" exact component={report} />
             <Route
@@ -83,6 +88,11 @@ class App extends Component {
               component={ReceiveMotorCertificates}
             />
             <Route path="/ClaimType" exact component={ClaimTypes} />
+            <Route
+              path="/ClaimsCategories"
+              exact
+              component={ClaimsCategories}
+            />
           </Wrapper>
         </BrowserRouter>
       </div>

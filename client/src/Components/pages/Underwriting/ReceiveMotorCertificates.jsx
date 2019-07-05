@@ -89,16 +89,16 @@ class ReceiveMotorCertificates extends Component {
     setabrev = (data, actionMeta) => {
         this.setState({ [actionMeta.name]: data });
        
-        if (data.value == "COMMERCIAL") {
+        if (data.value === "COMMERCIAL") {
             this.setState({ Abbreviation: "B" });
         }
-        if (data.value == "MOTOR CYCLES") {
+        if (data.value === "MOTOR CYCLES") {
             this.setState({ Abbreviation: "D" });
         }
-        if (data.value == "PRIVATE") {
+        if (data.value === "PRIVATE") {
             this.setState({ Abbreviation: "C" });
         }
-        if (data.value == "P.S.V") {
+        if (data.value === "P.S.V") {
             this.setState({ Abbreviation: "A" });
         }
     }
