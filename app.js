@@ -33,6 +33,7 @@ const InsuredItems = require("./Routes/Underwriting/InsuredItems");
 const ReceiveMotorCertificates = require("./Routes/Underwriting/ReceiveMotorCertificates");
 const CoInsurance = require("./Routes/Underwriting/CoInsurance");
 const ClaimTypes = require("./Routes/Claims/ClaimsTypes");
+const ClaimsCategories = require("./Routes/Claims/ClaimsCategories");
 //reports test
 const Report = require("./Routes/Reports/index");
 
@@ -130,7 +131,7 @@ app.use(
   PolicyRegister
 );
 app.use("/api/ClaimTypes", auth.validaterole("Claim Types"), ClaimTypes);
-app.use("/api/ClaimsCategories", auth.validaterole("ClaimsCategories"), ClaimTypes);
+app.use("/api/ClaimsCategories", auth.validaterole("ClaimsCategories"), ClaimsCategories);
 //end of app use routes
 app.use((req, res, next) => {
   const error = new Error("resource not found");
