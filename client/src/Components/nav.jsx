@@ -141,7 +141,7 @@ class Nav extends Component {
 
               <li>
                 <a href="">
-                  <i className="fa fa-th-large" />
+                  <i className="fa fa-list-alt" />
                   <span className="nav-label ">Claims</span>
                   <span className="fa arrow" />
                 </a>

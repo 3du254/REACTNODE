@@ -10,9 +10,12 @@ class ClaimTypes extends Component {
     super();
     this.state = {
       ClaimTypes: [],
-      TypeCode: "001",
-      Category: "Category",
-      TypeName: "TypeName"
+      TypeCode: "",
+      ClaimsCategory: [],
+      TypeName: "",
+
+      Category: "",
+      CategoryName: ""
     };
   }
 
@@ -39,6 +42,29 @@ class ClaimTypes extends Component {
       Group: "0"
     });
   }
+  fetchClaimsCategory = () => {
+    fetch("api/ClaimsCategories", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-access-token": localStorage.getItem("token")
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.length > 0) {
+          this.setState({ ClaimsCategory: data });
+          console.log(data);
+        } else {
+          swal("Oops!", data.message, "error");
+          console.log(data);
+        }
+      })
+      .catch(err => {
+        swal("Oops!", err.message, "error");
+      });
+  };
+  //end
   fetchData = () => {
     fetch("api/ClaimTypes", {
       method: "GET",
@@ -152,9 +178,7 @@ class ClaimTypes extends Component {
   }
   componentDidMount() {
     this.fetchData();
-    // this.fetchCounty();
-    /// this.fetchCurrency();
-    // this.fetchCountries();
+    this.fetchClaimsCategory();
   }
 
   render() {
@@ -235,6 +259,7 @@ class ClaimTypes extends Component {
             handleSubmit={this.handleSubmit}
             handleInputChange={this.handleInputChange}
             handleSelectChange={this.handleSelectChange}
+            ClaimsCategory={this.state.ClaimsCategory}
             Collections={this.state}
           />
         </div>
@@ -280,7 +305,7 @@ const Formdata = props => {
               <div className=" row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="TypeCode">TypeCode</label>
+                    <label htmlFor="TypeCode">Claim Type Code</label>
                     <input
                       type="text"
                       name="TypeCode"
@@ -294,21 +319,23 @@ const Formdata = props => {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="Category">Category</label>
-                    <input
-                      type="text"
-                      name="Category"
-                      required
-                      value={props.Values.Category}
+                    <label htmlFor="exampleInputEmail1">Claim Category</label>
+                    <select
                       className="form-control"
+                      name="Category"
+                      value={props.Values.Category}
                       onChange={props.handleInputChange}
-                      id="Category"
-                      aria-describedby="AgentNameHelp"
-                      placeholder="Enter Category name"
-                    />
+                    >
+                      {props.ClaimsCategory.map(Category => (
+                        <option value={Category.Code} key={Category.Code}>
+                          {Category.Name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
+
                   <div className="form-group">
-                    <label htmlFor="TypeName">TypeName</label>
+                    <label htmlFor="ClaimTypeName">TypeName</label>
                     <input
                       type="text"
                       name="TypeName"
