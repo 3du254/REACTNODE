@@ -148,6 +148,7 @@ class Nav extends Component {
                 <ul className="nav nav-second-level collapse">
                   <li>
                     <Link to="/ClaimsCategories">Claims Categories</Link>
+                    <Link to="/ClaimsDocumentTypes">Claims Document Types</Link>
                     <Link to="/ClaimType">Claims Types</Link>
                   </li>
                 </ul>

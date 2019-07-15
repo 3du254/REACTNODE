@@ -34,6 +34,7 @@ const ReceiveMotorCertificates = require("./Routes/Underwriting/ReceiveMotorCert
 const CoInsurance = require("./Routes/Underwriting/CoInsurance");
 const ClaimTypes = require("./Routes/Claims/ClaimsTypes");
 const ClaimsCategories = require("./Routes/Claims/ClaimsCategories");
+const ClaimsDocumentTypes = require("./Routes/Claims/ClaimsDocumentTypes");
 //reports test
 const Report = require("./Routes/Reports/index");
 
@@ -45,7 +46,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   //Enabling CORS
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -115,11 +116,7 @@ app.use(
   auth.validaterole("Family Dependants"),
   Dependants
 );
-app.use(
-  "/api/department",
-  auth.validaterole("Family Dependants"),
-  Department
-);
+app.use("/api/department", auth.validaterole("Family Dependants"), Department);
 app.use(
   "/api/damagedcerts",
   auth.validaterole("Family Dependants"),
@@ -131,7 +128,16 @@ app.use(
   PolicyRegister
 );
 app.use("/api/ClaimTypes", auth.validaterole("Claim Types"), ClaimTypes);
-app.use("/api/ClaimsCategories", auth.validaterole("ClaimsCategories"), ClaimsCategories);
+app.use(
+  "/api/ClaimsCategories",
+  auth.validaterole("Claims Categories"),
+  ClaimsCategories
+);
+app.use(
+  "/api/ClaimsDocumentTypes",
+  auth.validaterole("Claims Document Types"),
+  ClaimsDocumentTypes
+);
 //end of app use routes
 app.use((req, res, next) => {
   const error = new Error("resource not found");

@@ -35,6 +35,7 @@ import CoInsurance from "./Components/pages/Underwriting/CoInsurance";
 import report from "./Reports/testreport";
 import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
 import ClaimsCategories from "./Components/pages/Claims/ClaimsCategories";
+import ClaimsDocumentTypes from "./Components/pages/Claims/ClaimsDocumentTypes";
 
 class App extends Component {
   render() {
@@ -92,6 +93,11 @@ class App extends Component {
               path="/ClaimsCategories"
               exact
               component={ClaimsCategories}
+            />
+            <Route
+              path="/ClaimsDocumentTypes"
+              exact
+              component={ClaimsDocumentTypes}
             />
           </Wrapper>
         </BrowserRouter>

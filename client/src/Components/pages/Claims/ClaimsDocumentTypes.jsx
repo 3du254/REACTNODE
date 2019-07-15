@@ -5,17 +5,13 @@ import TableWrapper from "../../TableWrappper";
 import Wrapper from "../../wrapper";
 import swal from "sweetalert";
 
-class ClaimTypes extends Component {
+class ClaimsDocumentTypes extends Component {
   constructor() {
     super();
     this.state = {
-      ClaimTypes: [],
-      TypeCode: "",
-      ClaimsCategory: [],
-      TypeName: "",
-
-      Category: "",
-      CategoryName: ""
+      ClaimsDocumentTypes: [],
+      Code: "",
+      DocumentName: ""
     };
   }
 
@@ -42,31 +38,8 @@ class ClaimTypes extends Component {
       Group: "0"
     });
   }
-  fetchClaimsCategory = () => {
-    fetch("api/ClaimsCategories", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token")
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.length > 0) {
-          this.setState({ ClaimsCategory: data });
-          console.log(data);
-        } else {
-          swal("Oops!", data.message, "error");
-          console.log(data);
-        }
-      })
-      .catch(err => {
-        swal("Oops!", err.message, "error");
-      });
-  };
-  //end
   fetchData = () => {
-    fetch("api/ClaimTypes", {
+    fetch("api/ClaimsDocumentTypes", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -74,11 +47,11 @@ class ClaimTypes extends Component {
       }
     })
       .then(res => res.json())
-      .then(ClaimTypes => {
-        if (ClaimTypes.length > 0) {
-          this.setState({ ClaimTypes });
+      .then(ClaimsDocumentTypes => {
+        if (ClaimsDocumentTypes.length > 0) {
+          this.setState({ ClaimsDocumentTypes });
         } else {
-          swal("Oops!", ClaimTypes.message, "error");
+          swal("Oops!", ClaimsDocumentTypes.message, "error");
         }
       })
       .catch(err => {
@@ -98,7 +71,7 @@ class ClaimTypes extends Component {
     this.setState({ [actionMeta.name]: County.value });
   };
 
-  handleDelete = ClaimTypes => {
+  handleDelete = ClaimsDocumentTypes => {
     swal({
       title: "Are you sure?",
       text: "Are you sure that you want to delete this record?",
@@ -106,8 +79,8 @@ class ClaimTypes extends Component {
       dangerMode: false
     }).then(willDelete => {
       if (willDelete) {
-        console.log(ClaimTypes.TypeCode);
-        return fetch("api/ClaimTypes/" + ClaimTypes.TypeCode, {
+        //console.log(ClaimsCategories.Code);
+        return fetch("api/ClaimsDocumentTypes/" + ClaimsDocumentTypes.Code, {
           method: "Delete",
           headers: {
             "Content-Type": "application/json",
@@ -130,12 +103,11 @@ class ClaimTypes extends Component {
       }
     });
   };
-  handleEdit = ClaimTypes => {
+  handleEdit = ClaimsDocumentTypes => {
     const data = {
-      ClaimTypes: [],
-      TypeCode: ClaimTypes.TypeCode,
-      Category: ClaimTypes.Category,
-      TypeName: ClaimTypes.TypeName
+      ClaimsDocumentTypes: [],
+      Code: ClaimsDocumentTypes.Code,
+      DocumentName: ClaimsDocumentTypes.DocumentName
     };
     this.setState(data);
     this.setState({ reseter: true });
@@ -143,12 +115,11 @@ class ClaimTypes extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const data = {
-      TypeCode: this.state.TypeCode,
-      Category: this.state.Category,
-      TypeName: this.state.TypeName
+      Code: this.state.Code,
+      DocumentName: this.state.DocumentName
     };
-    console.log(data);
-    this.postData("api/ClaimTypes", data);
+    //console.log(data);
+    this.postData("api/ClaimsDocumentTypes", data);
     this.setState({ reseter: false });
   };
   postData(url = ``, data = {}) {
@@ -178,53 +149,47 @@ class ClaimTypes extends Component {
   }
   componentDidMount() {
     this.fetchData();
-    this.fetchClaimsCategory();
+    // this.fetchCounty();
+    /// this.fetchCurrency();
+    // this.fetchCountries();
   }
 
   render() {
     const ColumnData = [
       {
-        label: "TypeCode",
-        field: "TypeCode",
+        label: "Code",
+        field: "Code",
         sort: "asc",
         width: 250
       },
-
       {
-        label: "Category",
-        field: "Category",
-        sort: "asc",
-        width: 200
-      },
-      {
-        label: "TypeName",
-        field: "TypeName",
+        label: "DocumentName",
+        field: "DocumentName",
         sort: "asc",
         width: 200
       }
     ];
     let Rowdata1 = [];
-    const Rows = [...this.state.ClaimTypes];
+    const Rows = [...this.state.ClaimsDocumentTypes];
 
     if (Rows.length > 0) {
-      Rows.map((k, i) => {
+      Rows.map((Row, i) => {
         let Rowdata = {
-          TypeCode: k.TypeCode,
-          Category: k.Category,
-          TypeName: k.TypeName,
+          Code: Row.Code,
+          DocumentName: Row.DocumentName,
           action: (
             <span>
               {" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleEdit(k, e)}
+                onClick={e => this.handleEdit(Row, e)}
               >
                 Edit
               </a>
               |{" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleDelete(k, e)}
+                onClick={e => this.handleDelete(Row, e)}
               >
                 {" "}
                 Delete
@@ -240,7 +205,7 @@ class ClaimTypes extends Component {
       return (
         <div>
           <Breadcumps
-            tablename={"Add Claim Type"}
+            tablename={"Add Claims Document Types"}
             button={
               <button
                 to="/"
@@ -259,7 +224,6 @@ class ClaimTypes extends Component {
             handleSubmit={this.handleSubmit}
             handleInputChange={this.handleInputChange}
             handleSelectChange={this.handleSelectChange}
-            ClaimsCategory={this.state.ClaimsCategory}
             Collections={this.state}
           />
         </div>
@@ -268,7 +232,7 @@ class ClaimTypes extends Component {
       return (
         <div>
           <Breadcumps
-            tablename={"Claim Type list"}
+            tablename={"Claims Document Types list"}
             button={
               <button
                 type="button"
@@ -305,47 +269,33 @@ const Formdata = props => {
               <div className=" row">
                 <div className="col-sm">
                   <div className="form-group">
-                    <label htmlFor="TypeCode">Claim Type Code</label>
+                    <label htmlFor="Code">ClaimsDocumentTypes Code</label>
                     <input
                       type="text"
-                      name="TypeCode"
-                      value={props.Values.TypeCode}
+                      name="Code"
+                      value={props.Values.Code}
                       onChange={props.handleInputChange}
                       className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
-                      placeholder="Enter TypeCode"
+                      placeholder="Enter ClaimsDocumentTypes Code"
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Claim Category</label>
-                    <select
-                      className="form-control"
-                      name="Category"
-                      value={props.Values.Category}
-                      onChange={props.handleInputChange}
-                    >
-                      {props.ClaimsCategory.map(Category => (
-                        <option value={Category.Code} key={Category.Code}>
-                          {Category.Name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="ClaimTypeName">Claim Type Name</label>
+                    <label htmlFor="DocumentName">
+                      ClaimsDocumentTypes Name
+                    </label>
                     <input
                       type="text"
-                      name="TypeName"
+                      name="DocumentName"
                       required
-                      value={props.Values.TypeName}
+                      value={props.Values.DocumentName}
                       className="form-control"
                       onChange={props.handleInputChange}
-                      id="TypeName"
+                      id="Name"
                       aria-describedby="CityHelp"
-                      placeholder="Enter TypeName"
+                      placeholder="Enter ClaimsDocumentTypes Name"
                     />
                   </div>
                 </div>
@@ -361,4 +311,4 @@ const Formdata = props => {
   );
 };
 
-export default ClaimTypes;
+export default ClaimsDocumentTypes;
