@@ -69,13 +69,13 @@ function validaterole(SecurityModule) {
               } else {
                 return res.json({
                   success: false,
-                  message: "privilage violation. You have insufficient right to access this route."
+                  message: `privilage violation. You have insufficient right to access ${SecurityModule}`
                 });
               }
             } else {
               return res.json({
                 success: false,
-                message: "privilage violation. You have insufficient right to access this route."
+                message: `privilage violation. You have insufficient right to access ${SecurityModule}`
               });
             }
           }

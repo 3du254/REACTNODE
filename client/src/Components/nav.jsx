@@ -150,6 +150,7 @@ class Nav extends Component {
                     <Link to="/ClaimsCategories">Claims Categories</Link>
                     <Link to="/ClaimsDocumentTypes">Claims Document Types</Link>
                     <Link to="/ClaimType">Claims Types</Link>
+                    <Link to="/ClaimOtherDetails">Claim Other Details</Link>
                   </li>
                 </ul>
               </li>

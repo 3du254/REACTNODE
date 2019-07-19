@@ -36,6 +36,7 @@ import report from "./Reports/testreport";
 import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
 import ClaimsCategories from "./Components/pages/Claims/ClaimsCategories";
 import ClaimsDocumentTypes from "./Components/pages/Claims/ClaimsDocumentTypes";
+import ClaimOtherDetails from "./Components/pages/Claims/ClaimOtherDetails";
 
 class App extends Component {
   render() {
@@ -98,6 +99,11 @@ class App extends Component {
               path="/ClaimsDocumentTypes"
               exact
               component={ClaimsDocumentTypes}
+            />
+            <Route
+              path="/ClaimOtherDetails"
+              exact
+              component={ClaimOtherDetails}
             />
           </Wrapper>
         </BrowserRouter>

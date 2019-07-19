@@ -56,10 +56,7 @@ ClaimsRegister.get("/", (req, res) => {
           .input("InsurerClaimNo", sql.VarChar, req.body.InsurerClaimNo)
           .input("ClaimType", sql.VarChar, req.body.ClaimType)
           .input("DateOfLoss", sql.Date, req.body.DateOfLoss)
-          .input(
-            "DateReportedToBroker",
-            sql.Date,
-            req.body.DateReportedToBroker
+          .input("DateReportedToBroker",sql.Date,req.body.DateReportedToBroker
           )
           .input(
             "DateReportedToInsurer",

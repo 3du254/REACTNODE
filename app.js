@@ -35,6 +35,7 @@ const CoInsurance = require("./Routes/Underwriting/CoInsurance");
 const ClaimTypes = require("./Routes/Claims/ClaimsTypes");
 const ClaimsCategories = require("./Routes/Claims/ClaimsCategories");
 const ClaimsDocumentTypes = require("./Routes/Claims/ClaimsDocumentTypes");
+const ClaimsOtherDetails = require("./Routes/Claims/ClaimsOtherDetails");
 //reports test
 const Report = require("./Routes/Reports/index");
 
@@ -137,6 +138,11 @@ app.use(
   "/api/ClaimsDocumentTypes",
   auth.validaterole("Claims Document Types"),
   ClaimsDocumentTypes
+);
+app.use(
+  "/api/ClaimOtherDetails",
+  auth.validaterole("Claim Other Details"),
+  ClaimsOtherDetails
 );
 //end of app use routes
 app.use((req, res, next) => {

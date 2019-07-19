@@ -1,7 +1,7 @@
 const config = {
   user: "guest",
   password: "Citimax123",
-  server: "DESKTOP-DJGOEV3", //"DESKTOP-DJGOEV3", // You can use 'localhost\\instance' to connect to named instance
+  server: "Citimax", //"DESKTOP-DJGOEV3", // You can use 'localhost\\instance' to connect to named instance
   database: "Allicom"
 };
 // const config = {
