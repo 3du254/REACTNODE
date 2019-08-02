@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Breadcumps from "../../breadcumps";
 import Table from "../../Table";
+import Modal from "../../Modal";
 import TableWrapper from "../../TableWrappper";
+
 
 import swal from "sweetalert";
 import Select from "react-select";
@@ -23,10 +25,17 @@ class InsuredItems extends Component {
             Narration: "",           
             TotalSumInsured: "",          
             DMSDocRef: "",
-          
+            ShowModal:false         
            
         };
     }
+    setModalShow=()=>{
+        this.fetchMotorVehicles();
+        this.setState({ ShowModal: false });
+        this.setState({ MotorVehicle: this.state.MotorVehicles[0].RegNo });
+        console.log(this.state.MotorVehicles[0].RegNo);
+    }
+
     fetchMotorVehicles = () => {
         fetch("api/motorvehicle", {
             method: "GET",
@@ -89,7 +98,11 @@ class InsuredItems extends Component {
     };
   
     handleSelectChange = (County, actionMeta) => {
-        this.setState({ [actionMeta.name]: County });
+        //console.log(County.value);
+        this.setState({ [actionMeta.name]: County });        
+        if (County.value == true) {
+            this.setState({ ShowModal: true });
+        } 
     };
     handleclick = e => {
         e.preventDefault();
@@ -187,6 +200,7 @@ class InsuredItems extends Component {
             MotorVehicle: this.state.MotorVehicle.value,
         };
         this.postData("/api/InsuredItems", data);
+        this.setModalShow();
     };
     postData(url = ``, data = {}) {
         return fetch(url, {
@@ -317,10 +331,15 @@ class InsuredItems extends Component {
                 Rowdata1.push(Rowdata);
             });
         }
-
+        
         if (this.state.reseter) {
             return (
-                <div>
+                <div>                    
+                    <Modal
+                        show={this.state.ShowModal}
+                        onHide={this.setModalShow}
+                        body={this.state.ItemType.value}
+                    />
                     <Breadcumps
                         tablename={"Insured items"}
                         button={
@@ -368,6 +387,7 @@ class InsuredItems extends Component {
         }
     }
 }
+
 const Familiy = props => {
     const Familymembersoptions = [...props.Values.Familymembers].map(
         (k, i) => {
@@ -385,6 +405,10 @@ const Familiy = props => {
             };
         }
     );
+    MotorVehiclesoptions.unshift({
+        value: true,
+        label: "+ Add new"
+    });
     if (props.Values.ItemType.value == "Family") {
         return (
            
@@ -424,7 +448,7 @@ const Familiy = props => {
 
 
         );
-    } 
+    }    
     else{
         return <div />;
     }
@@ -439,6 +463,7 @@ const Formdata = props => {
         };
     });
     const ItemTypeOptions = [
+        
         {
             value: "General Description",
             label: "General Description"

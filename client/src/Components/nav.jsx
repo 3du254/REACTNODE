@@ -142,7 +142,7 @@ class Nav extends Component {
               <li>
                 <a href="">
                   <i className="fa fa-list-alt" />
-                  <span className="nav-label ">Claims</span>
+                  <span className="nav-label ">Claims Management</span>
                   <span className="fa arrow" />
                 </a>
                 <ul className="nav nav-second-level collapse">
@@ -166,6 +166,7 @@ class Nav extends Component {
                     <Link to="/ReceiveMotorCertificates">
                       Receive Motor Certificates
                     </Link>
+                    <Link to="/report">modal</Link>
                   </li>
                 </ul>
               </li>

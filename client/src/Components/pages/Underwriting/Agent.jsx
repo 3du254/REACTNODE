@@ -11,7 +11,7 @@ class Agent extends Component {
     this.state = {
       agents: [],
       CostCenter: "",
-      AgentCode: "",
+      AgentCode: "0",
       AgentName: "",
       AgentAddress: "",
       City: "",
@@ -35,7 +35,7 @@ class Agent extends Component {
   handleStateReset() {
     this.setState({
       CostCenter: "001",
-      AgentCode: "A001",
+      AgentCode: "0",
       AgentName: "steve",
       AgentAddress: "Nairobi",
       City: "Nairobi",
@@ -343,13 +343,15 @@ class Agent extends Component {
               {" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleEdit(k, e)}>
+                onClick={e => this.handleEdit(k, e)}
+              >
                 Edit
               </a>
               |{" "}
               <a
                 style={{ color: "#007bff" }}
-                onClick={e => this.handleDelete(k, e)}>
+                onClick={e => this.handleDelete(k, e)}
+              >
                 {" "}
                 Delete
               </a>
@@ -367,11 +369,12 @@ class Agent extends Component {
             tablename={"Add Agent"}
             button={
               <button
-                to='/'
-                type='button'
+                to="/"
+                type="button"
                 style={{ marginTop: 40 }}
                 onClick={this.handleclick}
-                className='btn btn-primary float-left'>
+                className="btn btn-primary float-left"
+              >
                 Go Back
               </button>
             }
@@ -393,10 +396,11 @@ class Agent extends Component {
             tablename={"Agents list"}
             button={
               <button
-                type='button'
+                type="button"
                 style={{ marginTop: 40 }}
                 onClick={this.handleclick}
-                className='btn btn-primary float-left'>
+                className="btn btn-primary float-left"
+              >
                 Create New
               </button>
             }
@@ -411,171 +415,158 @@ class Agent extends Component {
 }
 const Formdata = props => {
   return (
-    <div className='container-fluid'>
-      <div className='col-sm-12'>
-        <div className='ibox '>
-          <div className='ibox-title'>
-            <div className='ibox-tools'>
-              <a className='close-link'>
-                <i className='fa fa-times' />
+    <div className="container-fluid">
+      <div className="col-sm-12">
+        <div className="ibox ">
+          <div className="ibox-title">
+            <div className="ibox-tools">
+              <a className="close-link">
+                <i className="fa fa-times" />
               </a>
             </div>
           </div>
-          <div className='ibox-content'>
+          <div className="ibox-content">
             <form onSubmit={props.handleSubmit}>
-              <div className=' row'>
-                <div className='col-sm'>
-                  <div className='form-group'>
-                    <label htmlFor='CostCenter'>CostCenter</label>
+              <div className=" row">
+                <div className="col-sm">
+                  <div className="form-group">
+                    <label htmlFor="CostCenter">CostCenter</label>
                     <input
-                      type='text'
-                      name='CostCenter'
+                      type="text"
+                      name="CostCenter"
                       value={props.Values.CostCenter}
                       onChange={props.handleInputChange}
-                      className='form-control'
-                      id='exampleInputEmail1'
-                      aria-describedby='emailHelp'
-                      placeholder='Enter CostCenter'
+                      className="form-control"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      placeholder="Enter CostCenter"
                       required
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='AgentName'>AgentName</label>
+                  <div className="form-group">
+                    <label htmlFor="AgentName">AgentName</label>
                     <input
-                      type='text'
-                      name='AgentName'
+                      type="text"
+                      name="AgentName"
                       required
                       value={props.Values.AgentName}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='AgentName'
-                      aria-describedby='AgentNameHelp'
-                      placeholder='Enter Agent name'
+                      id="AgentName"
+                      aria-describedby="AgentNameHelp"
+                      placeholder="Enter Agent name"
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='City'>City</label>
+                  <div className="form-group">
+                    <label htmlFor="City">City</label>
                     <input
-                      type='date'
-                      name='City'
+                      type="date"
+                      name="City"
                       required
                       value={props.Values.City}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='City'
-                      aria-describedby='CityHelp'
-                      placeholder='Enter City'
+                      id="City"
+                      aria-describedby="CityHelp"
+                      placeholder="Enter City"
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='Mobile'>Mobile</label>
+                  <div className="form-group">
+                    <label htmlFor="Mobile">Mobile</label>
                     <input
-                      type='text'
-                      name='Mobile'
+                      type="text"
+                      name="Mobile"
                       required
                       value={props.Values.Mobile}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='Mobile'
-                      aria-describedby='MobileHelp'
-                      placeholder='Enter Mobile'
+                      id="Mobile"
+                      aria-describedby="MobileHelp"
+                      placeholder="Enter Mobile"
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='Occupation'>Occupation</label>
+                  <div className="form-group">
+                    <label htmlFor="Occupation">Occupation</label>
                     <input
-                      className='form-control'
-                      name='Occupation'
+                      className="form-control"
+                      name="Occupation"
                       value={props.Values.Occupation}
                       onChange={props.handleInputChange}
-                      placeholder='Enter Occupation'
+                      placeholder="Enter Occupation"
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='Group'>Group</label>
+                  <div className="form-group">
+                    <label htmlFor="Group">Group</label>
                     <input
-                      type='text'
-                      name='Group'
+                      type="text"
+                      name="Group"
                       required
                       value={props.Values.Group}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='Group'
-                      aria-describedby='GroupHelp'
-                      placeholder='Enter Group'
+                      id="Group"
+                      aria-describedby="GroupHelp"
+                      placeholder="Enter Group"
                     />
                   </div>
                 </div>
-                <div className='col-sm'>
-                  <div className='form-group'>
-                    <label htmlFor='AgentCode'>AgentCode</label>
+                <div className="col-sm">
+                  <div className="form-group">
+                    <label htmlFor="AgentAddress">AgentAddress</label>
                     <input
-                      type='text'
-                      name='AgentCode'
-                      value={props.Values.AgentCode}
-                      onChange={props.handleInputChange}
-                      className='form-control'
-                      id='AgentCode'
-                      placeholder='AgentCode'
-                    />
-                  </div>
-
-                  <div className='form-group'>
-                    <label htmlFor='AgentAddress'>AgentAddress</label>
-                    <input
-                      type='text'
-                      name='AgentAddress'
+                      type="text"
+                      name="AgentAddress"
                       value={props.Values.AgentAddress}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='AgentAddress'
-                      placeholder='Address'
+                      id="AgentAddress"
+                      placeholder="Address"
                     />
                   </div>
-                  <div className='form-group'>
-                    <label htmlFor='Telephone'>Telephone</label>
+                  <div className="form-group">
+                    <label htmlFor="Telephone">Telephone</label>
                     <input
-                      type='text'
-                      name='Telephone'
+                      type="text"
+                      name="Telephone"
                       value={props.Values.Telephone}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='Telephone'
-                      placeholder='Telephone'
+                      id="Telephone"
+                      placeholder="Telephone"
                     />
                   </div>
 
-                  <div className='form-group'>
-                    <label htmlFor='Email'>Email</label>
+                  <div className="form-group">
+                    <label htmlFor="Email">Email</label>
                     <input
-                      type='text'
-                      name='Email'
+                      type="text"
+                      name="Email"
                       onChange={props.handleInputChange}
                       value={props.Values.Email}
-                      className='form-control'
-                      id='Email'
-                      aria-describedby='emailHelp'
-                      placeholder='Email'
+                      className="form-control"
+                      id="Email"
+                      aria-describedby="emailHelp"
+                      placeholder="Email"
                     />
                   </div>
 
-                  <div className='form-group'>
-                    <label htmlFor='ContactPerson'>ContactPerson</label>
+                  <div className="form-group">
+                    <label htmlFor="ContactPerson">ContactPerson</label>
                     <input
-                      type='text'
-                      name='ContactPerson'
+                      type="text"
+                      name="ContactPerson"
                       required
                       value={props.Values.ContactPerson}
-                      className='form-control'
+                      className="form-control"
                       onChange={props.handleInputChange}
-                      id='ContactPerson'
-                      aria-describedby='ContactPersonHelp'
-                      placeholder='Enter ContactPerson'
+                      id="ContactPerson"
+                      aria-describedby="ContactPersonHelp"
+                      placeholder="Enter ContactPerson"
                     />
                   </div>
                 </div>
               </div>
-              <button type='submit' className='btn btn-primary'>
+              <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </form>

@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@react-pdf/renderer": "^1.6.3",
     "bcrypt": "^3.0.6",
+    "bootstrap": "^4.3.1",
     "concurrently": "^4.1.1",
     "html-pdf": "^2.2.0",
     "joi": "^14.3.1",

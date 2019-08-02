@@ -32,7 +32,7 @@ import PolicyRegister from "./Components/pages/Underwriting/PolicyRegister";
 import InsuredItems from "./Components/pages/Underwriting/InsuredItems";
 import ReceiveMotorCertificates from "./Components/pages/Underwriting/ReceiveMotorCertificates";
 import CoInsurance from "./Components/pages/Underwriting/CoInsurance";
-import report from "./Reports/testreport";
+import report from "./Reports/testreport2";
 import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
 import ClaimsCategories from "./Components/pages/Claims/ClaimsCategories";
 import ClaimsDocumentTypes from "./Components/pages/Claims/ClaimsDocumentTypes";
@@ -73,8 +73,7 @@ class App extends Component {
             <Route path="/calcitems" exact component={ClacItems} />
             <Route path="/FamilyMember" exact component={FamilyMember} />
             <Route path="/FamilyDependant" exact component={FamilyDependant} />
-            <Route
-              path="/premiumCalculator"
+            <Route path="/premiumCalculator"
               exact
               component={PremiumCalculator}
             />

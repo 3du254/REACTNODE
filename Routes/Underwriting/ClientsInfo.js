@@ -26,7 +26,6 @@ Clients.get("/", (req, res) => {
     .post("/", (req, res) => {
         const schema = Joi.object().keys({
             ClientCode: Joi.string()
-                .min(2)
                 .max(50)
                 .required(),
             ClientName: Joi.string()

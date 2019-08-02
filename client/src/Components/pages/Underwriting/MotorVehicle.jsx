@@ -224,7 +224,7 @@ class MotorVehicle extends Component {
       CostCenter: this.state.CostCenter,
       make: this.state.make.value,
       Model: this.state.Model,
-      Body: this.state.Body,
+      Body: this.state.Body.value,
       Colour: this.state.Colour,
       ChasisNo: this.state.ChasisNo,
       EngineNo: this.state.EngineNo,
@@ -271,6 +271,7 @@ class MotorVehicle extends Component {
   componentDidMount() {
     this.fetchData();
     this.fetchVmake();
+    this.setState({ reseter: this.props.reseter });
     // this.fetchCurrency();
     // this.fetchCategory();
   }
@@ -503,6 +504,46 @@ const Formdata = props => {
       label: k.Name
     };
   });
+  const vehicleBodyOptions=[{
+    value: "Convertibles",
+    label: "Convertibles"
+  },{
+      value: "Coupe",
+      label: "Coupe"
+    }, {
+      value: "Crossover",
+      label: "Crossover"
+    }, {
+      value: "Hatchback",
+      label: "Hatchback"
+    }, {
+      value: "Luxury",
+      label: "Luxury"
+    }, {
+      value: "MUV",
+      label: "MUV"
+    }, {
+      value: "Notchback",
+      label: "Notchback"
+    }, {
+      value: "Sedan",
+      label: "Sedan"
+    }, {
+      value: "Sports Cars",
+      label: "Sports Cars"
+    }, {
+      value: "SUV",
+      label: "SUV"
+    }, {
+      value: "Wagon",
+      label: "Wagon"
+    }, {
+      value: "Super Cars",
+      label: "Super Cars"
+    }, {
+      value: "Van / Minivan",
+      label: "Van / Minivan"
+    }]
   return (
     <div className='container-fluid'>
       <div className='col-sm-12'>
@@ -546,17 +587,15 @@ const Formdata = props => {
                   </div>
                   <div className='form-group'>
                     <label htmlFor='Body'>Body</label>
-                    <input
-                      type='date'
+                    <Select
                       name='Body'
                       required
                       value={props.Values.Body}
-                      className='form-control'
-                      onChange={props.handleInputChange}
-                      id='Body'
-                      aria-describedby='BodyHelp'
-                      placeholder='Enter vehicle Body'
-                    />
+                      defaultInputValue={props.Values.Body}
+                      onChange={props.handleSelectChange}
+                      options={vehicleBodyOptions}
+                      placeholder='Enter vehicle body'
+                    />                    
                   </div>
                   <div className='form-group'>
                     <label htmlFor='ChasisNo'>ChasisNo</label>

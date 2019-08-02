@@ -14,7 +14,7 @@ class Client extends Component {
       AgentOptions: [],
       CategoryOptions: [],
       client: [],
-      ClientCode: "",
+      ClientCode: "0",
       ClientName: "",
       ClientAddress: "",
       PINNO: "",
@@ -553,17 +553,15 @@ const Formdata = props => {
               <div className=' row'>
                 <div className='col-sm'>
                   <div className='form-group'>
-                    <label htmlFor='CompCode'>ClientCode</label>
+                    <label htmlFor='ClientName'>ClientName</label>
                     <input
                       type='text'
-                      name='ClientCode'
-                      value={props.Values.ClientCode}
+                      name='ClientName'
+                      value={props.Values.ClientName}
                       onChange={props.handleInputChange}
                       className='form-control'
-                      id='exampleInputEmail1'
-                      aria-describedby='emailHelp'
-                      placeholder='Enter ClientCode'
-                      required
+                      id='ClientName'
+                      placeholder='ClientName'
                     />
                   </div>
                   <div className='form-group'>
@@ -648,18 +646,7 @@ const Formdata = props => {
                   </div>{" "}
                 </div>
                 <div className='col-sm'>
-                  <div className='form-group'>
-                    <label htmlFor='ClientName'>ClientName</label>
-                    <input
-                      type='text'
-                      name='ClientName'
-                      value={props.Values.ClientName}
-                      onChange={props.handleInputChange}
-                      className='form-control'
-                      id='ClientName'
-                      placeholder='ClientName'
-                    />
-                  </div>
+                  
 
                   <div className='form-group'>
                     <label htmlFor='PINNO'>PINNO</label>
