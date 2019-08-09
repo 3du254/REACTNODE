@@ -32,11 +32,12 @@ import PolicyRegister from "./Components/pages/Underwriting/PolicyRegister";
 import InsuredItems from "./Components/pages/Underwriting/InsuredItems";
 import ReceiveMotorCertificates from "./Components/pages/Underwriting/ReceiveMotorCertificates";
 import CoInsurance from "./Components/pages/Underwriting/CoInsurance";
-import report from "./Reports/testreport2";
+import report from "./Reports/testreport";
 import ClaimTypes from "./Components/pages/Claims/ClaimTypes";
 import ClaimsCategories from "./Components/pages/Claims/ClaimsCategories";
 import ClaimsDocumentTypes from "./Components/pages/Claims/ClaimsDocumentTypes";
 import ClaimOtherDetails from "./Components/pages/Claims/ClaimOtherDetails";
+import ClientInfo from "./Components/pages/Underwriting/ClientInfo";
 
 class App extends Component {
   render() {
@@ -73,7 +74,8 @@ class App extends Component {
             <Route path="/calcitems" exact component={ClacItems} />
             <Route path="/FamilyMember" exact component={FamilyMember} />
             <Route path="/FamilyDependant" exact component={FamilyDependant} />
-            <Route path="/premiumCalculator"
+            <Route
+              path="/premiumCalculator"
               exact
               component={PremiumCalculator}
             />
@@ -104,6 +106,7 @@ class App extends Component {
               exact
               component={ClaimOtherDetails}
             />
+            <Route path="/ClientInfo" exact component={ClientInfo} />
           </Wrapper>
         </BrowserRouter>
       </div>

@@ -1,7 +1,4 @@
-module.exports = ({ name, price1, price2, receiptId }) => {
-  const today = new Date();
-  return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -71,7 +68,7 @@ module.exports = ({ name, price1, price2, receiptId }) => {
         margin: 0;
         border-bottom: none;
       }
-      
+
       .invoice-box table tr.item td {
         border-bottom: 1px solid #ccc;
       }
@@ -107,7 +104,7 @@ module.exports = ({ name, price1, price2, receiptId }) => {
         <tr class="top">
           <td colspan="2" style="text-align: center">
             <img
-              src="http://www.allicom.co.ke/images/ALLICOM.png"
+              src="../client/public/img/ALLICOM.png"
               style="width:100%; max-width:156px;"
             />
           </td>
@@ -115,7 +112,7 @@ module.exports = ({ name, price1, price2, receiptId }) => {
         <tr class="information">
           <td colspan="2">
             <table>
-              <tr>                
+              <tr>
                 <td style="font-size: 16px"><strong>INVOICE</strong></td>
                 <td>
                   SN: 001
@@ -153,7 +150,7 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                 </td>
               </tr>
               <tr>
-                <td>Email: kemboi.edwin555@gmail.com</td>
+                <td>Email: kemboi.edwin555.gmail.com</td>
                 <td>
                   MOBILE: +254724554175
                 </td>
@@ -250,6 +247,3 @@ module.exports = ({ name, price1, price2, receiptId }) => {
     </div>
   </body>
 </html>
-
-    `;
-};

@@ -87,6 +87,12 @@ class Nav extends Component {
                         <Link to="/department">Department</Link>
                       </li>
                       <li>
+                        <Link to="/agents">Agents</Link>
+                      </li>
+                      <li>
+                        <Link to="/premiumCalculator">Premium Calculator</Link>
+                      </li>
+                      <li>
                         <Link to="/calcitems">Premium calc items</Link>
                       </li>
                       <li>
@@ -114,28 +120,23 @@ class Nav extends Component {
                   <li>
                     <Link to="/clients">Clients</Link>
                   </li>
-                  <li>
-                    <Link to="/agents">Agents</Link>
-                  </li>
+
                   <li>
                     <Link to="/motorvehicles">Motor Vehicles</Link>
                   </li>
                   <li>
-                    <Link to="/premiumCalculator">Premium Calculator</Link>
-                  </li>
-
-                  <li>
                     <Link to="/FamilyMember">Family Members</Link>
-                  </li>
-                  <li>
-                    <Link to="/policyregister">Policy Register</Link>
                   </li>
                   <li>
                     <Link to="/InsuredItems"> Insured Items</Link>
                   </li>
                   <li>
-                    <Link to="/CoInsurance"> Co Insurance</Link>
+                    <Link to="/policyregister">Policy Register</Link>
                   </li>
+
+                  {/* <li>
+                    <Link to="/CoInsurance"> Co Insurance</Link>
+                  </li> */}
                 </ul>
               </li>
 
@@ -158,15 +159,14 @@ class Nav extends Component {
               <li>
                 <a href="">
                   <i className="fa fa-th-large" />
-                  <span className="nav-label ">Certificates</span>
+                  <span className="nav-label ">Module Test</span>
                   <span className="fa arrow" />
                 </a>
                 <ul className="nav nav-second-level collapse">
                   <li>
-                    <Link to="/ReceiveMotorCertificates">
-                      Receive Motor Certificates
-                    </Link>
-                    <Link to="/report">modal</Link>
+                    <Link to="/ReceiveMotorCertificates">Module</Link>
+                    <Link to="/report">Invoice</Link>
+                    <Link to="/ClientInfo">Client Information</Link>
                   </li>
                 </ul>
               </li>
