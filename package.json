@@ -17,7 +17,7 @@
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.1",
     "file-saver": "^2.0.2",
-    "html-pdf": "^2.2.0",
+    "html-pdf": "^3.0.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^5.1.0",
